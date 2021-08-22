@@ -10,13 +10,46 @@
     <title>Login - SB Admin</title>
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <script>
+        function validate() {
+            var name = document.forms["frmQuery"]["name"];
+            var phone = document.forms["frmQuery"]["phone"];
+            var email = document.forms["frmQuery"]["email"];
+            if (name.value == "") {
+                window.alert("Please enter your name.");
+                name.focus();
+                return false;
+            }
+            if (phone.value == "") {
+                window.alert("Please enter your phone.");
+                phone.focus();
+                return false;
+            }
+            if (email.value == "") {
+                window.alert("Please enter your phone.");
+                phone.focus();
+                return false;
+            }
+
+        }
+    </script>
 </head>
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="studentform.html">Admission Enquiry Portal</a>
-        <!-- Priyank Add a Admin Login Button here -->
+        <!-- Add space -->
+        <span class="ms-auto"></span>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="login.php">Admin Login</a></li>
+                </ul>
+            </li>
+        </ul>
 
     </nav>
     <div id="layoutAuthentication">
@@ -31,33 +64,206 @@
                                     <h3 class="text-center font-weight-light my-4">Admission Enquiry</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form>
-                                        <div class="form-floating mb-3">
-                                            <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
-                                            <label for="inputEmail">Email address</label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                            <input class="form-control" id="inputPassword" type="password" placeholder="Password" />
-                                            <label for="inputPassword">Password</label>
-                                        </div>
-                                        <!-- <div class="form-check mb-3">
-                                            <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
-                                            <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
-                                        </div> -->
-                                        <div class="form-check mb-3">
 
-                                            <select class="form-control" id="cars" name="cars" style="width: 50%; float: right;">
-                                                <option value="volvo">Volvo</option>
-                                                <option value="saab">Saab</option>
-                                                <option value="fiat">Fiat</option>
-                                                <option value="audi">Audi</option>
-                                              </select>
-                                            <label for="cars">Some question</label>
-                                        </div>
-                                        <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a class="small" href="password.html">Forgot Password?</a>
-                                            <a class="btn btn-primary" href="admindashboard.html.html">Login</a>
-                                        </div>
+
+                                    <form method="post" name="frmQuery" onsubmit="return validate()" action="">
+                                        <center>
+                                            <table class="tablemain">
+                                                <tr>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b><h6>Name<span style="color:red">*</span></h6></b></td>
+                                                    <td> <input class="form-control" type="text" name="name" /></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><b><h6>Email<span style="color:red">*</span></h6></b></td>
+                                                    <td> <input class="form-control" type="email" name="email" /></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><b><h6>Phone Number<span style="color:red">*</span></h6></b></td>
+                                                    <td> <input class="form-control" type="text" name="phone" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b><h6>Select range of your CET score<span style="color:red">*</span></h6></b></td>
+                                                    <td> <select class="form-control" name="cet">
+                                                         <option>(Select)</option>
+                                                         <option>Above 80%</option>
+                                                        <option>Above70% & 60%</option>
+                                                        <option>Below 60%</option>
+                                                     </select></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b><h6>How far do you stay from our Institute?<span style="color:red">*</span></h5></b></td>
+                                                    <td> <select class="form-control" name="far">
+                                                         <option>(Select)</option>
+                                                         <option>Within 10Km</option>
+                                                        <option>Within 30Km</option>
+                                                        <option>50Km and above</option>
+                                                     </select></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b><h6>Are your parent working?<span style="color:red">*</span></h5></b></td>
+                                                    <td> <select class="form-control" name="parent">
+                                                         <option>(Select)</option>
+                                                         <option>Both</option>
+                                                        <option>Only  father</option>
+                                                        <option>Only mother</option>
+                                                     </select></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b><h6>From where you came to know about our Institute?(Reference)<span style="color:red">*</span></h5></b></td>
+                                                    <td> <select class="form-control" name="reference">
+                                                         <option>(Select)</option>
+                                                         <option>Family OR frds OR relatives members</option>
+                                                        <option>College Adverties</option>
+                                                        <option>News Papers</option>
+                                                     </select></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><b><h6>Which Branch you would like to give as your 1st choice?<span style="color:red">*</span></h5></b></td>
+                                                    <td> <select class="form-control" name="branch">
+                                                         <option>(Select)</option>
+                                                         <option>Biomedical Engineering </option>
+                                                         <option>Computer Engineering</option>
+                                                         <option>Electronics Engineering</option>
+                                                         <option>Electronics & Telecommunication Engineering</option>
+                                                         <option>Information Technology Engineering</option>
+                                                          <option>Mechanical Engineering</option>
+                                                           <option>Civil Engineering</option>
+                                                            <option>Textile Engineering</option>
+                                                          </select></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><b><h6>Do you required Hostel facility?<span style="color:red">*</span></h5></b></td>
+                                                    <td> <select class="form-control" name="hostel">
+                                                         <option>(Select)</option>
+                                                         <option>Yes</option>
+                                                         <option>No</option>
+                                                         </select></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><b><h6>Is you Siblings studying in our Institute currently or previously?<span style="color:red">*</span></h5></b></td>
+                                                    <td> <select class="form-control" name="sibling">
+                                                         <option>(Select)</option>
+                                                         <option>Yes</option>
+                                                         <option>No</option>
+                                                         </select></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b><h6>Give you Preferences to join college type<span style="color:red">*</span></h5></b></td>
+                                                    <td> <select class="form-control" name="priority">
+                                                         <option>(Select)</option>
+                                                         <option>A+ Grade</option>
+                                                         <option>A++ Grade</option>
+                                                         <option>Govt Aided</option>
+                                                         <option>Govt Unaided</option>
+                                                         <option>NBA Accredited</option>
+                                                         </select></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><b><h6>Library facilities(with ranking 1 to 4)<span style="color:red">*</span></h5></b></td>
+                                                    <td> <select class="form-control" name="library">
+                                                         <option>(Select)</option>
+                                                         <option>1</option>
+                                                         <option>2</option>
+                                                         <option>3</option>
+                                                         <option>4</option>
+                                                         </select></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b><h6>Good teaching(with ranking 1 to 4)<span style="color:red">*</span></h5></b></td>
+                                                    <td> <select class="form-control" name="teaching">
+                                                         <option>(Select)</option>
+                                                         <option>1</option>
+                                                         <option>2</option>
+                                                         <option>3</option>
+                                                         <option>4</option>
+                                                         </select></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b><h6>Good infrastructure(with ranking 1 to 4)<span style="color:red">*</span></h5></b></td>
+                                                    <td> <select class="form-control" name="infrastructure">
+                                                         <option>(Select)</option>
+                                                         <option>1</option>
+                                                         <option>2</option>
+                                                         <option>3</option>
+                                                         <option>4</option>
+                                                         </select></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b><h6>Lab Facilities(with ranking 1 to 4)<span style="color:red">*</span></h5></b></td>
+                                                    <td> <select class="form-control" name="lab">
+                                                         <option>(Select)</option>
+                                                         <option>1</option>
+                                                         <option>2</option>
+                                                         <option>3</option>
+                                                         <option>4</option>
+                                                         </select></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b><h6>100% placement(with ranking 1 to 4)<span style="color:red">*</span></h5></b></td>
+                                                    <td> <select class="form-control" name="placement">
+                                                         <option>(Select)</option>
+                                                         <option>1</option>
+                                                         <option>2</option>
+                                                         <option>3</option>
+                                                         <option>4</option>
+                                                         </select></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b><h6>Which appropriate mode of transport will you prefer to reach college ? <span style="color:red">*</span></h5></b></td>
+                                                    <td> <select class="form-control" name="transport">
+                                                         <option>(Select)</option>
+                                                         <option>Through all lines</option>
+                                                         <option>Only central</option>
+                                                         <option>Only Western</option>
+                                                         <option>Only Harbour</option>
+                                                         <option>Bus</option>
+                                                         </select></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b><h6>Do you prefer any minority college?<span style="color:red">*</span></h5></b></td>
+                                                    <td> <select class="form-control" name="minority">
+                                                         <option>(Select)</option>
+                                                         <option>Yes</option>
+                                                         <option>No</option>
+                                                         </select></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b><h6>No of instructional days you will preferred<span style="color:red">*</span></h5></b></td>
+                                                    <td> <select class="form-control" name="instructional">
+                                                         <option>(Select)</option>
+                                                         <option>5 days/week</option>
+                                                         <option>6 days/week</option>
+                                                         </select></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b><h6>Do you required any bank loan assistant?<span style="color:red">*</span></h5></b></td>
+                                                    <td> <select class="form-control" name="bank_loan">
+                                                         <option>(Select)</option>
+                                                         <option>Yes</option>
+                                                         <option>No</option>
+                                                         </select></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><input type="reset" /></td>
+                                                    <td style="text-align:right"><input type="submit" name="submit" value="Submit" /></td>
+
+                                                </tr>
+
+                                            </table>
+                                        </center>
+                                    </form>
+
                                     </form>
                                 </div>
                             </div>
@@ -85,3 +291,33 @@
 </body>
 
 </html>
+
+<style>
+    thead,
+    tbody,
+    tfoot,
+    tr,
+    td,
+    th {
+        padding: 10px;
+    }
+    
+    .form-control {
+        width: 300px;
+    }
+    
+    input[type=submit],
+    input[type=reset] {
+        width: 200px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border: none;
+        background-color: #0d6efd;
+        border-radius: 5px;
+        color: #ffffff;
+    }
+    
+    input[type=submit] {
+        background-color: #198754;
+    }
+</style>
