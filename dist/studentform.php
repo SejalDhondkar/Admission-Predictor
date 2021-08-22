@@ -1,3 +1,55 @@
+<?php 
+session_start();
+
+	include("connection.php");
+	include("functions.php");
+
+
+	if($_SERVER['REQUEST_METHOD'] == "POST")
+	{
+		//something was posted
+		$name = $_POST['name'];
+		$email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $cet = $_POST['cet'];
+        $far = $_POST['far'];
+        $parent = $_POST['parent'];
+        $reference = $_POST['reference'];
+        $branch = $_POST['branch'];
+        $hostel = $_POST['hostel'];
+        $sibling = $_POST['sibling'];
+        $priority = $_POST['priority'];
+        $library = $_POST['library'];
+        $teaching = $_POST['teaching'];
+        $infrastructure = $_POST['infrastructure'];
+        $lab = $_POST['lab'];
+        $placement = $_POST['placement'];
+        $transport = $_POST['transport'];
+        $minority = $_POST['minority'];
+        $instructional = $_POST['instructional'];
+        $bank_loan = $_POST['bank_loan'];
+
+		if(!empty($name) && !empty($email) && !empty($phone))
+		{
+
+			//save to database
+			$query = "insert into student_enquiry (name,email,phone,cet,far,parent,reference, branch, hostel, sibling, priority, library, teaching, infrastructure, lab, placement, transport, minority, instructional, bank_loan) 
+            values ('$name','$email','$phone', '$cet','$far','$parent','$reference','$branch','$hostel','$sibling','$priority','$library','$teaching','$infrastructure','$lab','$placement','$transport','$minority','$instructional','$bank_loan')";
+
+			mysqli_query($conn, $query);
+
+			header("Location: studentform.php");
+			die;
+		}else
+		{
+			echo "Please enter some valid information!";
+		}
+	}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,7 +118,7 @@
                                 <div class="card-body">
 
 
-                                    <form method="post" name="frmQuery" onsubmit="return validate()" action="">
+                                    <form method="POST" name="frmQuery" onsubmit="return validate()">
                                         <center>
                                             <table class="tablemain">
                                                 <tr>
