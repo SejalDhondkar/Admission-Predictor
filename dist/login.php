@@ -87,7 +87,7 @@ session_start();
                                             <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a class="small" href="studentform.html">Back to Admission Form</a>
+                                            <a class="small" href="studentform.php">Back to Admission Form</a>
                                             <!-- <a class="btn btn-primary" href="admindashboard.html.html">Login</a> -->
                                             <!-- <input id="button" type="submit" value="Login"> -->
                                             <button type="submit" value="Login">Login</button>
