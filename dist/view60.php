@@ -78,53 +78,17 @@ session_start();
                         <li class="breadcrumb-item active"> Admin-Dashboard</li>
                     </ol>
                     <div class="row">
-                        
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-success text-white mb-4">
-                                <div class="card-body"><b>Students whose chances are more than 80%</b></div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="view80.php">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-warning text-white mb-4">
-                                <div class="card-body"><b>Students whose chances are between 60% to 80%</b></div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="view70.php">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6">
+                    <div class="col-xl-3 col-md-6">
                             <div class="card bg-danger text-white mb-4">
-                                <div class="card-body"><b>Students whose chances are less than 60%</b></div>
+                                <div class="card-body"><b>Students whose chances are less than 65%</b></div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="view60.php">View Details</a>
+                                    <a class="small text-white stretched-link" href="admindashboard.php">Back</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-6">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fas fa-chart-area me-1"></i> Area Chart Example
-                                </div>
-                                <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fas fa-chart-bar me-1"></i> Bar Chart Example
-                                </div>
-                                <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                            </div>
-                        </div>
-                    </div>
+                        
+                       
                     <?php
                     include("connection.php");
                     
@@ -159,7 +123,7 @@ session_start();
                                 $sql = "SELECT * FROM `student_enquiry`";
                                 $result = mysqli_query($conn, $sql);
                                 while($row = mysqli_fetch_array($result))
-                                 {
+                                 { if($row['probability']<=65 ){
                                   echo"<tr>
                                         <th>". $row['name'] . "</th>
                                         <th>". $row['email'] ."</th>
@@ -167,7 +131,10 @@ session_start();
                                         <th>". $row['branch'] ."</th>
                                         <th>". $row['created_at'] ."</th>
                                         <th><b>". $row['probability'] ."</b></th>
-                                    </tr>";
+                                    </tr>";}
+                                    else{
+                                        continue;
+                                    }
                                  }?>
                                     
                                 </tbody>
